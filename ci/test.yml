@@ -2,8 +2,7 @@
 platform: linux
 
 inputs:
-  - name: cucumber_git_repo
+  - name: cucumber-master
 
 run:
-  path: cucumber_git_repo/ci/scripts/test
-
+  path: cucumber-master/ci/scripts/test

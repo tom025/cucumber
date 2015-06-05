@@ -1,0 +1,18 @@
+groups:
+  - name: cucumber
+    jobs:
+      - test
+
+jobs:
+  - name: test
+    plan:
+      - get: cucumber-master
+      - task: test
+        file: cucumber-master/ci/test.yml
+
+resources:
+  - name: cucumber-master
+    type: git
+    source:
+      branch: master
+      uri: https://github.com/tom025/cucumber.git
