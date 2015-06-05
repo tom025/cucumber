@@ -8,8 +8,14 @@ jobs:
     plan:
       - get: cucumber-master
         trigger: true
-      - task: test
+      - task: test-2.2
         file: cucumber-master/ci/test.yml
+        config:
+          image: docker:///ruby#2.2
+      - task: test-2.1
+        file: cucumber-master/ci/test.yml
+        config:
+          image: docker:///ruby#2.1
 
 resources:
   - name: cucumber-master

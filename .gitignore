@@ -29,3 +29,5 @@ Gemfile.lock
 tags
 .ruby-version
 .project
+.vagrant
+Vagrantfile
