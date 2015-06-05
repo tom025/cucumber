@@ -8,14 +8,27 @@ jobs:
     plan:
       - get: cucumber-master
         trigger: true
-      - task: test-2.2
-        file: cucumber-master/ci/test.yml
-        config:
-          image: docker:///ruby#2.2
-      - task: test-2.1
-        file: cucumber-master/ci/test.yml
-        config:
-          image: docker:///ruby#2.1
+      - aggregate:
+        - task: test-2.2
+          file: cucumber-master/ci/test.yml
+          config:
+            image: docker:///ruby#2.2
+        - task: test-2.1
+          file: cucumber-master/ci/test.yml
+          config:
+            image: docker:///ruby#2.1
+        - task: test-2.0
+          file: cucumber-master/ci/test.yml
+          config:
+            image: docker:///ruby#2.0
+        - task: test-1.9.3
+          file: cucumber-master/ci/test.yml
+          config:
+            image: docker:///ruby#1.9.3
+        - task: test-jruby
+          file: cucumber-master/ci/test.yml
+          config:
+            image: docker:///jruby#1.7
 
 resources:
   - name: cucumber-master
