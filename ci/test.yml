@@ -2,5 +2,5 @@
 platform: linux
 
 run:
-  path: cucumber_git_repo/ci/scripts/test
+  path: scripts/test
 
