@@ -1,6 +1,9 @@
 ---
 platform: linux
 
+inputs:
+  - cucumber_git_repo
+
 run:
-  path: scripts/test
+  path: cucumber_git_repo/ci/scripts/test
 
