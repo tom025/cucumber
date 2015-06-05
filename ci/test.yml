@@ -6,3 +6,5 @@ inputs:
 
 run:
   path: cucumber-master/ci/scripts/test
+
+image: docker:///ruby#2.2

@@ -1,1 +1,2 @@
-echo hello from concourse
+bundle install
+bundle exec rake
