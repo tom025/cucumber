@@ -1,6 +1,8 @@
+#!/usr/bin/env bash
 set -e -x
 
 unset BUNDLE_APP_CONFIG
+export CUCUMBER_CORE_PATH=`readlink -f cucumber-core`
 
 cd cucumber-master
 

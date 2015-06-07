@@ -9,6 +9,8 @@ jobs:
     plan:
       - get: cucumber-master
         trigger: true
+      - get: cucumber-core
+        trigger: true
       - aggregate:
         - task: test-2.2
           file: cucumber-master/ci/test.yml
