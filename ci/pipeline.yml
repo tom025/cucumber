@@ -1,10 +1,11 @@
 groups:
   - name: cucumber
     jobs:
-      - test
+      - cucumber
+      - cucumber-core
 
 jobs:
-  - name: test
+  - name: cucumber
     plan:
       - get: cucumber-master
         trigger: true
@@ -30,9 +31,41 @@ jobs:
           config:
             image: docker:///jruby#1.7
 
+  - name: cucumber-core
+    plan:
+      - get: cucumber-core
+        trigger: true
+      - aggregate:
+        - task: test-2.2
+          file: cucumber-core/ci/test.yml
+          config:
+            image: docker:///ruby#2.2
+        - task: test-2.1
+          file: cucumber-core/ci/test.yml
+          config:
+            image: docker:///ruby#2.1
+        - task: test-2.0
+          file: cucumber-core/ci/test.yml
+          config:
+            image: docker:///ruby#2.0
+        - task: test-1.9.3
+          file: cucumber-core/ci/test.yml
+          config:
+            image: docker:///ruby#1.9.3
+        - task: test-jruby
+          file: cucumber-core/ci/test.yml
+          config:
+            image: docker:///jruby#1.7
+
 resources:
   - name: cucumber-master
     type: git
     source:
       branch: master
       uri: https://github.com/tom025/cucumber.git
+
+  - name: cucumber-core
+    type: git
+    source:
+      branch: master
+      uri: https://github.com/tom025/cucumber-ruby-core.git
