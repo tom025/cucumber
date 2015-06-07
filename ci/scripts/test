@@ -7,5 +7,8 @@ export CUCUMBER_CORE_PATH=`readlink -f cucumber-core`
 cd cucumber-master
 
 ruby --version
-bundle install -j8 --path vendor/cache
-bundle exec rake
+bundle install -j8 --path vendor/cache --binstubs
+
+export PATH=$PWD/bin:$PATH
+
+rake
